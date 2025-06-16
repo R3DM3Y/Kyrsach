@@ -146,3 +146,4 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\refint\Kyrsach.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.pdb
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.genruntimeconfig.cache
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\ref\Kyrsach.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.sourcelink.json
