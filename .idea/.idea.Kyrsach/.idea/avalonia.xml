@@ -3,7 +3,14 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="Kyrsach/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/App.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/Components/Admin/AdminButton.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/Components/Services/ServiceCard.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/Features/Admin/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/MainWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/Views/MainWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
       </map>
     </option>
   </component>

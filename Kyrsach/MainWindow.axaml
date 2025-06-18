@@ -2,63 +2,86 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:local="clr-namespace:Kyrsach"
+        mc:Ignorable="d" 
         x:Class="Kyrsach.MainWindow"
         x:CompileBindings="False"
         Title="Kyrsach">
-        <DockPanel>
-                <StackPanel
-                        DockPanel.Dock="Top"
-                        Spacing="5"
-                        HorizontalAlignment="Center"
-                        Height="40" 
-                        Orientation="Horizontal">
-                        <TextBox
-                                x:Name="SearchBox"
-                                Width="200"/>
-                        <ComboBox
-                                VerticalAlignment="Center"
-                                Width="100"
-                                x:Name="ManufactureBox"/>
-                        <ComboBox
-                                VerticalAlignment="Center"
-                                Width="157"
-                                x:Name="SortBox">
-                                <ComboBoxItem>
-                                        Без сортировки
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                        По возрастанию
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                        По убыванию
-                                </ComboBoxItem>
-                        </ComboBox>
-                        <TextBlock/>
-                </StackPanel>
-                <ListBox x:Name="ServiceBox">
-                        <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                        <Border
-                                                BorderBrush="Bisque"
-                                                BorderThickness="1"
-                                                Padding="5">
-                                                <StackPanel HorizontalAlignment="Center">
-                                                        <Image
-                                                                Source="{Binding Image}"
-                                                                Width="100"
-                                                                Height="100"/>
-                                                        <TextBlock
-                                                                Text="{Binding Title}"
-                                                                TextWrapping="Wrap"
-                                                                TextAlignment="Center"/>
-                                                        <TextBlock
-                                                                Text="{Binding Cost}"
-                                                                TextAlignment="Center"/>
-                                                </StackPanel>
-                                        </Border>
-                                </DataTemplate>
-                        </ListBox.ItemTemplate>
-                </ListBox>
-        </DockPanel>
+    
+    <Window.Resources>
+        <local:DiscountToVisibilityConverter x:Key="DiscountConverter"/>
+    </Window.Resources>
+
+    <DockPanel>
+        <!-- Панель управления -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10" Margin="10">
+            <TextBox Width="200" Watermark="Поиск..."/>
+            <ComboBox Width="100" ItemsSource="{Binding Manufacturers}"/>
+            <ComboBox Width="150" SelectedIndex="0">
+                <ComboBoxItem>Без сортировки</ComboBoxItem>
+                <ComboBoxItem>По возрастанию цены</ComboBoxItem>
+                <ComboBoxItem>По убыванию цены</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Список услуг -->
+        <ListBox x:Name="ServiceBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="5" Padding="10">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <!-- Изображение -->
+                            <Image Grid.Column="0"
+                                   Source="{Binding Image}"
+                                   Width="120"
+                                   Height="120"
+                                   Stretch="UniformToFill"/>
+                            
+                            <!-- Информация -->
+                            <StackPanel Grid.Column="1">
+                                <!-- Название -->
+                                <TextBlock Text="{Binding Title}" 
+                                           FontWeight="Bold" 
+                                           TextWrapping="Wrap"/>
+                                
+                                <!-- Блок цен -->
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <!-- Старая цена с перечёркиванием -->
+                                    <TextBlock Text="{Binding OldPriceFormatted}"
+                                               TextDecorations="Strikethrough"
+                                               Foreground="Gray"
+                                               IsVisible="{Binding HasDiscount}"/>
+                                               
+                                    <!-- Стрелка между ценами -->
+                                    <TextBlock Text=" → " 
+                                               IsVisible="{Binding HasDiscount}"/>
+                                               
+                                    <!-- Новая цена -->
+                                    <TextBlock Text="{Binding NewPriceFormatted}"/>
+                                </StackPanel>
+                                
+                                <!-- Скидка (под ценой) -->
+                                <TextBlock Text="{Binding DiscountFormatted}"
+                                           Foreground="Green"
+                                           Margin="0,2,0,0"
+                                           IsVisible="{Binding HasDiscount}"/>
+                                
+                                <!-- Описание -->
+                                <TextBlock Text="{Binding Description}"
+                                           Margin="0,5"
+                                           TextWrapping="Wrap"
+                                           Foreground="#666"/>
+                                
+                                <!-- Кнопки -->
+                                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Left" Margin="0,10,0,0">
+                                    <Button Content="Редактировать" Command="{Binding EditCommand}"/>
+                                    <Button Content="Удалить" Command="{Binding DeleteCommand}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
 </Window>

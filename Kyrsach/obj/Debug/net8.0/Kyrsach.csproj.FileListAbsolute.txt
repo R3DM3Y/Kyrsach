@@ -1,3 +1,11 @@
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.csproj.AssemblyReference.cache
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Avalonia\resources
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.AssemblyInfoInputs.cache
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.AssemblyInfo.cs
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.csproj.CoreCompileInputs.cache
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.sourcelink.json
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Kyrsach.exe
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Kyrsach.deps.json
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Kyrsach.runtimeconfig.json
@@ -27,6 +35,7 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Avalonia.Themes.Si
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Avalonia.Win32.Automation.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Avalonia.Win32.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Avalonia.X11.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\DynamicData.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\HarfBuzzSharp.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Humanizer.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\MicroCom.Runtime.dll
@@ -52,7 +61,9 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Microsoft.Extensio
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Npgsql.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\ReactiveUI.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\SkiaSharp.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Splat.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -60,6 +71,7 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Composition
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Composition.TypedParts.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\System.Reactive.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Tmds.DBus.Protocol.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -133,17 +145,9 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\osx\nativ
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.csproj.AssemblyReference.cache
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Avalonia\resources
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.AssemblyInfoInputs.cache
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.AssemblyInfo.cs
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.csproj.CoreCompileInputs.cache
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.csproj.Up2Date
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\refint\Kyrsach.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.pdb
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.genruntimeconfig.cache
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\ref\Kyrsach.dll
-C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\obj\Debug\net8.0\Kyrsach.sourcelink.json
