@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Kyrsach.Models;
 using ReactiveUI;
@@ -44,6 +45,11 @@ public class ServicePresenter : Service
 
         EditCommand = ReactiveCommand.Create(Edit);
         DeleteCommand = ReactiveCommand.Create(Delete);
+    }
+    
+    public IBrush Background 
+    {
+        get => HasDiscount ? Brushes.DarkGreen : Brushes.Transparent;
     }
 
     public Bitmap? Image => GetImage();
