@@ -8,6 +8,7 @@
         <entry key="Kyrsach/AuthWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Components/Admin/AdminButton.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Components/Services/ServiceCard.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/EditServiceWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Features/Admin/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/MainWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />

@@ -27,5 +27,8 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/AuthWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/EditServiceWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

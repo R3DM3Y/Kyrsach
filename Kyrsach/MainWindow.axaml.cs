@@ -13,6 +13,8 @@ namespace Kyrsach
         public MainWindow()
         {
             InitializeComponent();
+            ServicePresenter.ServiceEdited += OnServiceEdited;
+            ServicePresenter.ServiceDeleted += OnServiceDeleted;
             this.Opened += OnMainWindowOpened; // Подписываемся на событие открытия окна
             LoadServices();
     
@@ -56,13 +58,13 @@ namespace Kyrsach
         private void LoadServices()
         {
             using var context = new PostgresContext();
-            var services = context.Services
-                .Select(service => new ServicePresenter(service))
+            var services = context.Services.ToList();
+    
+            ServiceBox.ItemsSource = services
+                .Select(s => new ServicePresenter(s))
                 .ToList();
-
-            _allServices = new ObservableCollection<ServicePresenter>(services);
-            ServiceBox.ItemsSource = _allServices; // Изначально показываем все услуги
         }
+
         private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
         {
             ApplyAllFilters();
@@ -103,6 +105,38 @@ namespace Kyrsach
         
         private ObservableCollection<ServicePresenter> _allServices = new();
         
+        private void OnServiceDeleted(object? sender, EventArgs e)
+        {
+            if (sender is ServicePresenter service)
+            {
+                // Обновляем только удаленный элемент
+                if (ServiceBox.ItemsSource is ObservableCollection<ServicePresenter> items)
+                {
+                    items.Remove(service);
+                }
+            }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            ServicePresenter.ServiceDeleted -= OnServiceDeleted;
+            base.OnClosed(e);
+        }
         
+        private void OnServiceEdited(object? sender, EventArgs e)
+        {
+            if (sender is ServicePresenter service)
+            {
+                // Обновляем только измененную услугу
+                if (ServiceBox.ItemsSource is ObservableCollection<ServicePresenter> items)
+                {
+                    var index = items.IndexOf(service);
+                    if (index >= 0)
+                    {
+                        items[index] = service;
+                    }
+                }
+            }
+        }
     }
 }
