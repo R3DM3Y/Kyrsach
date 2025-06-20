@@ -16,6 +16,8 @@ namespace Kyrsach
         {
             InitializeComponent();
             LoadServices();
+            DiscountFilterComboBox.SelectedIndex = 0; // Устанавливаем "Все скидки" по умолчанию
+            DiscountFilterComboBox.SelectionChanged += (s, e) => ApplyFilters();
         }
 
         private void LoadServices()
@@ -25,8 +27,26 @@ namespace Kyrsach
                 .Select(service => new ServicePresenter(service))
                 .ToList();
 
-            ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(services);
+            _allServices = new ObservableCollection<ServicePresenter>(services);
+            ServiceBox.ItemsSource = _allServices; // Изначально показываем все услуги
         }
+        private void ApplyFilters()
+        {
+            var filtered = _allServices.AsEnumerable();
+
+            switch (DiscountFilterComboBox.SelectedIndex)
+            {
+                case 1: filtered = filtered.Where(s => s.Discount >= 0 && s.Discount < 6); break;
+                case 2: filtered = filtered.Where(s => s.Discount >= 5 && s.Discount < 16); break;
+                case 3: filtered = filtered.Where(s => s.Discount >= 15 && s.Discount < 31); break;
+                case 4: filtered = filtered.Where(s => s.Discount >= 30 && s.Discount < 71); break;
+                case 5: filtered = filtered.Where(s => s.Discount >= 70 && s.Discount <= 100); break;
+                // case 0: "Все скидки" - оставляем как есть
+            }
+
+            ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(filtered);
+        }
+        private ObservableCollection<ServicePresenter> _allServices = new();
     }
 }
 

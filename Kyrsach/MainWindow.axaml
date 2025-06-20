@@ -16,7 +16,14 @@
         <!-- Панель управления -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10" Margin="10">
             <TextBox Width="200" Watermark="Поиск..."/>
-            <ComboBox Width="100" ItemsSource="{Binding Manufacturers}"/>
+            <ComboBox x:Name="DiscountFilterComboBox" Width="150" SelectedIndex="0">
+                <ComboBoxItem>Все скидки</ComboBoxItem>
+                <ComboBoxItem>0-5%</ComboBoxItem>
+                <ComboBoxItem>5-15%</ComboBoxItem>
+                <ComboBoxItem>15-30%</ComboBoxItem>
+                <ComboBoxItem>30-70%</ComboBoxItem>
+                <ComboBoxItem>70-100%</ComboBoxItem>
+            </ComboBox>
             <ComboBox Width="150" SelectedIndex="0">
                 <ComboBoxItem>Без сортировки</ComboBoxItem>
                 <ComboBoxItem>По возрастанию цены</ComboBoxItem>
