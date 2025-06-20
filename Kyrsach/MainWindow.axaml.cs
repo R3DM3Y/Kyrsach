@@ -17,9 +17,10 @@ namespace Kyrsach
             InitializeComponent();
             LoadServices();
     
-            // Подписываемся на изменения
-            DiscountFilterComboBox.SelectionChanged += (s, e) => ApplyFilters();
-            SortComboBox.SelectionChanged += (s, e) => ApplyFilters();
+            // Подписываемся на все события
+            SearchTextBox.TextChanged += OnSearchTextChanged;
+            DiscountFilterComboBox.SelectionChanged += (s, e) => ApplyAllFilters();
+            SortComboBox.SelectionChanged += (s, e) => ApplyAllFilters();
         }
 
         private void LoadServices()
@@ -32,11 +33,24 @@ namespace Kyrsach
             _allServices = new ObservableCollection<ServicePresenter>(services);
             ServiceBox.ItemsSource = _allServices; // Изначально показываем все услуги
         }
-        private void ApplyFilters()
+        private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ApplyAllFilters();
+        }
+        private void ApplyAllFilters()
         {
             var filtered = _allServices.AsEnumerable();
 
-            // Фильтрация по скидке (из предыдущего шага)
+            // 1. Поиск по тексту
+            if (!string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            {
+                var searchText = SearchTextBox.Text.ToLower();
+                filtered = filtered.Where(s => 
+                    s.Title.ToLower().Contains(searchText) ||
+                    (s.Description?.ToLower()?.Contains(searchText) ?? false));
+            }
+
+            // 2. Фильтрация по скидке
             switch (DiscountFilterComboBox.SelectedIndex)
             {
                 case 1: filtered = filtered.Where(s => s.Discount >= 0 && s.Discount < 5); break;
@@ -46,33 +60,15 @@ namespace Kyrsach
                 case 5: filtered = filtered.Where(s => s.Discount >= 70 && s.Discount <= 100); break;
             }
 
-            // Сортировка
+            // 3. Сортировка
             switch (SortComboBox.SelectedIndex)
             {
                 case 1: filtered = filtered.OrderBy(s => s.Cost); break;
                 case 2: filtered = filtered.OrderByDescending(s => s.Cost); break;
             }
 
+            // Обновляем список
             ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(filtered);
-        }
-        private void ApplySorting()
-        {
-            if (ServiceBox.ItemsSource == null) return;
-
-            var services = ServiceBox.ItemsSource.Cast<ServicePresenter>().AsEnumerable();
-
-            switch (SortComboBox.SelectedIndex)
-            {
-                case 1: // По возрастанию цены
-                    services = services.OrderBy(s => s.Cost);
-                    break;
-                case 2: // По убыванию цены
-                    services = services.OrderByDescending(s => s.Cost);
-                    break;
-                // case 0: Без сортировки - оставляем как есть
-            }
-
-            ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(services);
         }
         
         private ObservableCollection<ServicePresenter> _allServices = new();
