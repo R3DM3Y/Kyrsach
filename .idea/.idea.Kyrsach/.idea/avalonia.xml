@@ -5,6 +5,7 @@
       <map>
         <entry key="Kyrsach/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/App.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/AuthWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Components/Admin/AdminButton.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Components/Services/ServiceCard.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Features/Admin/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />

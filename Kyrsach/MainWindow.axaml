@@ -30,6 +30,15 @@
                 <ComboBoxItem>По возрастанию цены</ComboBoxItem>
                 <ComboBoxItem>По убыванию цены</ComboBoxItem>
             </ComboBox>
+            <Button x:Name="AddServiceButton" Content="Добавить услугу" IsVisible="False"/>
+            <Button x:Name="AppointmentsButton" Content="Ближайшие записи" IsVisible="False"/>
+            <Button Content="Редактировать" 
+                    IsVisible="{Binding IsAdmin}"
+                    Command="{Binding EditCommand}"/>
+
+            <Button Content="Удалить"
+                    IsVisible="{Binding IsAdmin}"
+                    Command="{Binding DeleteCommand}"/>
         </StackPanel>
 
         <!-- Список услуг -->
@@ -75,12 +84,6 @@
                                    Foreground="White"
                                    Margin="0,2,0,5"
                                    IsVisible="{Binding HasDiscount}"/>
-                        
-                        <!-- Описание -->
-                        <TextBlock Text="{Binding Description}"
-                                   Margin="0,5"
-                                   TextWrapping="Wrap"
-                                   Foreground="#666"/>
                     </StackPanel>
                 </Grid>
             </Border>

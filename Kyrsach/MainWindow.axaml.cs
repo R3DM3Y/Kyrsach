@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -12,15 +13,48 @@ namespace Kyrsach
 {
     public partial class MainWindow : Window
     {
+        private bool _isAdmin = false;
         public MainWindow()
         {
             InitializeComponent();
+            this.Opened += OnMainWindowOpened; // Подписываемся на событие открытия окна
             LoadServices();
     
             // Подписываемся на все события
             SearchTextBox.TextChanged += OnSearchTextChanged;
             DiscountFilterComboBox.SelectionChanged += (s, e) => ApplyAllFilters();
             SortComboBox.SelectionChanged += (s, e) => ApplyAllFilters();
+        }
+        private async void OnMainWindowOpened(object sender, EventArgs e)
+        {
+            this.Opened -= OnMainWindowOpened; // Отписываемся после первого вызова
+            await CheckAuthorization();
+        }
+
+        private async Task CheckAuthorization()
+        {
+            var authWindow = new AuthWindow();
+            await authWindow.ShowDialog(this); // Теперь окно владельца видимо
+        
+            _isAdmin = authWindow.IsAdmin;
+            UpdateAdminVisibility();
+            
+            if (!authWindow.IsAuthenticated)
+            {
+                Close(); // Закрываем приложение, если авторизация отменена
+            }
+        }
+
+        private void UpdateAdminVisibility()
+        {
+            AddServiceButton.IsVisible = _isAdmin;
+            AppointmentsButton.IsVisible = _isAdmin;
+            
+            // Для кнопок редактирования/удаления в списке услуг:
+            foreach (var item in ServiceBox.Items.OfType<ServicePresenter>())
+            {
+                item.IsAdmin = _isAdmin;    
+            }
         }
 
         private void LoadServices()
@@ -77,6 +111,7 @@ namespace Kyrsach
 
 public class ServicePresenter : Service
 {
+    public bool IsAdmin { get; set; }
     public ServicePresenter(Service service)
     {
         // Инициализация свойств

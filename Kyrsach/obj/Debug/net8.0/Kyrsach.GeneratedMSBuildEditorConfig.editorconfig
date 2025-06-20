@@ -24,5 +24,8 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/AuthWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/romas/RiderProjects/Kyrsach/Kyrsach/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
