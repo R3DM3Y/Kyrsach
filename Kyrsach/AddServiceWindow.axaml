@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Kyrsach.AddServiceWindow"
+        Title="Добавление услуги"
+        Width="400"
+        SizeToContent="Height">
+    <StackPanel Margin="15" Spacing="10">
+        
+        <StackPanel Margin="0,10">
+            <TextBlock Text="Изображение услуги:"/>
+            <Button Content="Выбрать изображение..." 
+                    Click="SelectImage_Click"
+                    Margin="0,5"/>
+            
+            <Image x:Name="PreviewImage"
+                   MaxWidth="300"
+                   MaxHeight="200"
+                   Margin="0,5"
+                   Stretch="Uniform"/>
+        </StackPanel>
+        
+        <TextBlock Text="Название:"/>
+        <TextBox x:Name="TitleTextBox"
+                 Watermark="Не указано"/>
+        
+        <TextBlock Text="Стоимость:"/>
+        <NumericUpDown x:Name="PriceUpDown" Minimum="0"
+                       Watermark="Не указана"/>
+        
+        <TextBlock Text="Скидка (%):"/>
+        <NumericUpDown x:Name="DiscountUpDown" Minimum="0" Maximum="100"
+                       Watermark="Не указана"/>
+        
+        <TextBlock Text="Длительность (мин):"/>
+        <NumericUpDown x:Name="DurationUpDown" Minimum="1" Maximum="240"
+                       Watermark="Не указана"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button Content="Отмена" Click="Cancel_Click"/>
+            <Button Content="Сохранить" Click="Save_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

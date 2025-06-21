@@ -35,6 +35,15 @@ namespace Kyrsach
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Получаем значения из формы
+            decimal basePrice = (decimal)PriceUpDown.Value; // Цена БЕЗ скидки
+            double? discount = DiscountUpDown.Value.HasValue 
+                ? (double?)DiscountUpDown.Value.Value 
+                : null;
+
+            // Просто сохраняем как есть (цена без скидки)
+            EditedService.Cost = basePrice;
+            EditedService.Discount = discount;
             if (string.IsNullOrWhiteSpace(EditedService.Title))
             {
                 return;

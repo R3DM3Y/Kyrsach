@@ -7,22 +7,33 @@
         SizeToContent="Height">
     <StackPanel Margin="15" Spacing="10">
         <TextBlock Text="Название:"/>
-        <TextBox Text="{Binding EditedService.Title}"/>
+        <TextBox 
+            Text="{Binding EditedService.Title}"
+            Watermark="Не указано"/>
         
         <TextBlock Text="Стоимость:"/>
-        <NumericUpDown Value="{Binding EditedService.Cost}"/>
+        <!-- Показываем цену БЕЗ скидки для редактирования -->
+        <NumericUpDown x:Name="PriceUpDown"  
+                       Value="{Binding Cost}" 
+                       Minimum="0"
+                       Watermark="Не указана"/>
+        
+        <TextBlock Text="Скидка (%):"/>
+        <NumericUpDown x:Name="DiscountUpDown"
+                       Value="{Binding Discount}"
+                       Minimum="0"
+                       Maximum="100"
+                       Watermark="Не указана"
+                       Text="{Binding Discount, StringFormat='{}{0:N0}', TargetNullValue=''}"/>
         
         <TextBlock Text="Длительность (мин):"/>
         <NumericUpDown Value="{Binding EditedService.DurationInMinutes}"
-                       Minimum="1" Maximum="240"/>
-        
-        <TextBlock Text="Скидка (%):"/>
-        <NumericUpDown Value="{Binding EditedService.Discount}"
-                       Minimum="0" Maximum="100"/>
+                       Minimum="1" Maximum="240"
+                       Watermark="Не указана"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
             <Button Content="Отмена" Click="Cancel_Click"/>
-            <Button Content="Сохранить" Click="Save_Click" Background="#FFDDDDDD"/>
+            <Button Content="Сохранить" Click="Save_Click"/>
         </StackPanel>
     </StackPanel>
 </Window>

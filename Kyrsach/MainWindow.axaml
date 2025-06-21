@@ -30,70 +30,61 @@
                 <ComboBoxItem>По возрастанию цены</ComboBoxItem>
                 <ComboBoxItem>По убыванию цены</ComboBoxItem>
             </ComboBox>
-            <Button x:Name="AddServiceButton" Content="Добавить услугу" IsVisible="False"/>
-            <Button x:Name="AppointmentsButton" Content="Ближайшие записи" IsVisible="False"/>
+            <Button x:Name="AddServiceButton" 
+                    Content="Добавить услугу" 
+                    IsVisible="{Binding IsAdmin, RelativeSource={RelativeSource AncestorType=Window}}"
+                    Click="AddServiceButton_Click"/>
+            <Button x:Name="AppointmentsButton" 
+                    Content="Ближайшие записи" 
+                    IsVisible="{Binding IsAdmin, RelativeSource={RelativeSource AncestorType=Window}}"
+                    />
         </StackPanel>
 
         <!-- Список услуг -->
         <ListBox x:Name="ServiceBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-    <ListBox.ItemTemplate>
-        <DataTemplate>
-            <!-- Добавляем Background="{Binding Background}" -->
-            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="5" 
-                    Background="{Binding Background}" Padding="10">
-                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                    <!-- Изображение -->
-                    <Image Grid.Column="0"
-                           Source="{Binding Image}"
-                           Width="120"
-                           Height="120"
-                           Stretch="UniformToFill"/>
-                    
-                    <!-- Информация -->
-                    <StackPanel Grid.Column="1">
-                        <!-- Название -->
-                        <TextBlock Text="{Binding Title}" 
-                                   FontWeight="Bold" 
-                                   TextWrapping="Wrap"/>
-                        
-                        <!-- Блок цен -->
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <!-- Старая цена с перечёркиванием -->
-                            <TextBlock Text="{Binding OldPriceFormatted}"
-                                       TextDecorations="Strikethrough"
-                                       Foreground="Gray"
-                                       IsVisible="{Binding HasDiscount}"/>
-                                       
-                            <!-- Стрелка между ценами -->
-                            <TextBlock Text=" → " 
-                                       IsVisible="{Binding HasDiscount}"/>
-                                       
-                            <!-- Новая цена -->
-                            <TextBlock Text="{Binding NewPriceFormatted}"/>
-                        </StackPanel>
-                        
-                        <!-- Кнопки (ТОЛЬКО ДЛЯ АДМИНА) -->
-                        <StackPanel Orientation="Horizontal" Spacing="10" 
-                                    Margin="0,10,0,0"
-                                    IsVisible="{Binding IsAdmin}">
-                            <Button Content="Редактировать" 
-                                    Command="{Binding EditCommand}"
-                                    Padding="10,5"/>
-                            <Button Content="Удалить"
-                                    Command="{Binding DeleteCommand}"
-                                    Padding="10,5"/>
-                        </StackPanel>
-                        
-                        <!-- Скидка (под ценой) -->
-                        <TextBlock Text="{Binding DiscountFormatted}"
-                                   Foreground="White"
-                                   Margin="0,2,0,5"
-                                   IsVisible="{Binding HasDiscount}"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </DataTemplate>
-    </ListBox.ItemTemplate>
-</ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="5" 
+                            Background="{Binding Background}" Padding="10">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <!-- Изображение -->
+                            <Image Grid.Column="0"
+                                   Source="{Binding Image}"
+                                   Width="120"
+                                   Height="120"
+                                   Stretch="UniformToFill"/>
+                            
+                            <!-- Информация -->
+                            <StackPanel Grid.Column="1">
+                                <!-- Название -->
+                                <TextBlock Text="{Binding Title}" 
+                                           FontWeight="Bold" 
+                                           TextWrapping="Wrap"/>
+                                
+                                <!-- Цена -->
+                                <TextBlock Text="{Binding PriceDisplayText}" 
+                                           Margin="0,5"/>
+                                
+                                <!-- Длительность -->
+                                <TextBlock Text="{Binding DurationText}"
+                                           Margin="0,2,0,5"/>
+                                
+                                <!-- Кнопки (ТОЛЬКО ДЛЯ АДМИНА) -->
+                                <StackPanel Orientation="Horizontal" Spacing="10" 
+                                            Margin="0,10,0,0"
+                                            IsVisible="{Binding IsAdmin}">
+                                    <Button Content="Редактировать" 
+                                            Command="{Binding EditCommand}"
+                                            Padding="10,5"/>
+                                    <Button Content="Удалить"
+                                            Command="{Binding DeleteCommand}"
+                                            Padding="10,5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </DockPanel>
 </Window>
