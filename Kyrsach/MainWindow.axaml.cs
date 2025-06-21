@@ -113,13 +113,13 @@ namespace Kyrsach
         
         private void OnServiceDeleted(object? sender, EventArgs e)
         {
-            if (sender is ServicePresenter service)
+            if (sender is ServicePresenter deletedService)
             {
-                // Обновляем только удаленный элемент
-                if (ServiceBox.ItemsSource is ObservableCollection<ServicePresenter> items)
-                {
-                    items.Remove(service);
-                }
+                // Удаляем из основной коллекции
+                _allServices.Remove(deletedService);
+        
+                // Переприменяем фильтры
+                ApplyAllFilters();
             }
         }
 

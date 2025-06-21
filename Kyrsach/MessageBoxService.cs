@@ -39,5 +39,34 @@ namespace Kyrsach
 
             return await dialog.ShowDialog<bool>(parent);
         }
+        
+        public static async Task ShowError(Window parent, string title, string message)
+        {
+            var dialog = new Window
+            {
+                Title = title,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+
+            var okButton = new Button { Content = "OK", Margin = new Thickness(5) };
+            okButton.Click += (_, __) => dialog.Close();
+
+            dialog.Content = new StackPanel
+            {
+                Children =
+                {
+                    new TextBlock { Text = message, Margin = new Thickness(20) },
+                    new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Children = { okButton }
+                    }
+                }
+            };
+
+            await dialog.ShowDialog(parent);
+        }
     }
 }

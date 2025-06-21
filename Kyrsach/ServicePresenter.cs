@@ -10,6 +10,8 @@ using Avalonia.VisualTree;
 using Kyrsach;
 using Kyrsach.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq; // для LINQ методов
+
 
 public class ServicePresenter : Service
 {
@@ -63,48 +65,59 @@ public class ServicePresenter : Service
 
     private async Task OnDeleteClicked()
     {
-        // Получаем главное окно через визуальное дерево
-        var control = new Control(); // Временный элемент для доступа к TopLevel
-        var topLevel = control.GetVisualRoot() as Window;
+        var topLevel = Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop 
+            ? desktop.MainWindow 
+            : null;
         if (topLevel == null) return;
-
-        bool confirm = await MessageBoxService.ShowConfirmation(
-            topLevel,
-            "Подтверждение удаления",
-            $"Удалить услугу '{Title}'?");
-
-        if (!confirm) return;
 
         try
         {
+            bool confirm = await MessageBoxService.ShowConfirmation(
+                topLevel,
+                "Подтверждение удаления",
+                $"Удалить услугу '{Title}'?");
+
+            if (!confirm) return;
+
             using var context = new PostgresContext();
+        
+            // Проверяем есть ли записи на эту услугу
             bool hasBookings = await context.ClientServices
                 .AnyAsync(cs => cs.ServiceId == Id);
-            
+        
             if (hasBookings)
             {
-                await MessageBoxService.ShowConfirmation(
+                await MessageBoxService.ShowError(
                     topLevel,
                     "Ошибка",
                     "Нельзя удалить услугу с активными записями");
                 return;
             }
 
+            // Удаляем дополнительные фото если есть
+            var photos = await context.ServicePhotos
+                .Where(sp => sp.ServiceId == Id)
+                .ToListAsync();
+        
+            context.ServicePhotos.RemoveRange(photos);
+        
+            // Удаляем саму услугу
             var service = await context.Services.FindAsync(Id);
             if (service != null)
             {
                 context.Services.Remove(service);
                 await context.SaveChangesAsync();
-                IsDeleted = true;
+            
+                // Уведомляем об удалении
                 ServiceDeleted?.Invoke(this, EventArgs.Empty);
             }
         }
         catch (Exception ex)
         {
-            await MessageBoxService.ShowConfirmation(
+            await MessageBoxService.ShowError(
                 topLevel,
-                "Ошибка",
-                $"Ошибка удаления: {ex.Message}");
+                "Ошибка удаления",
+                $"Произошла ошибка: {ex.Message}");
         }
     }
 
