@@ -32,14 +32,29 @@ public class ServicePresenter : Service
         DeleteCommand = new RelayCommand(async _ => await OnDeleteClicked(), _ => IsAdmin && !IsDeleted);
     }
 
-    private void OnEditClicked()
+    private async void OnEditClicked()
     {
-        // Получаем главное окно через визуальное дерево
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var editWindow = new EditServiceWindow(this);
-            editWindow.ShowDialog(desktop.MainWindow).ContinueWith(t =>
-                TaskScheduler.FromCurrentSynchronizationContext());
+            bool result = await editWindow.ShowDialog<bool>(desktop.MainWindow);
+        
+            if (result)
+            {
+                // Обновляем текущий объект
+                using var context = new PostgresContext();
+                var updatedService = await context.Services.FindAsync(this.Id);
+                if (updatedService != null)
+                {
+                    this.Title = updatedService.Title;
+                    this.Cost = updatedService.Cost;
+                    this.DurationInMinutes = updatedService.DurationInMinutes;
+                    this.Discount = updatedService.Discount;
+                    this.Description = updatedService.Description;
+                
+                    ServiceEdited?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 

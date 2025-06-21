@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,9 +61,13 @@ namespace Kyrsach
             using var context = new PostgresContext();
             var services = context.Services.ToList();
     
-            ServiceBox.ItemsSource = services
-                .Select(s => new ServicePresenter(s))
-                .ToList();
+            // Сохраняем все услуги в _allServices
+            _allServices = new ObservableCollection<ServicePresenter>(
+                services.Select(s => new ServicePresenter(s))
+            );
+    
+            // Обновляем ItemsSource
+            ServiceBox.ItemsSource = _allServices;
         }
 
         private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
@@ -71,7 +76,7 @@ namespace Kyrsach
         }
         private void ApplyAllFilters()
         {
-            var filtered = _allServices.AsEnumerable();
+            IEnumerable<ServicePresenter> filtered = _allServices;
 
             // 1. Поиск по тексту
             if (!string.IsNullOrWhiteSpace(SearchTextBox.Text))
@@ -93,11 +98,12 @@ namespace Kyrsach
             }
 
             // 3. Сортировка
-            switch (SortComboBox.SelectedIndex)
+            filtered = SortComboBox.SelectedIndex switch
             {
-                case 1: filtered = filtered.OrderBy(s => s.Cost); break;
-                case 2: filtered = filtered.OrderByDescending(s => s.Cost); break;
-            }
+                1 => filtered.OrderBy(s => s.Cost),
+                2 => filtered.OrderByDescending(s => s.Cost),
+                _ => filtered // Без сортировки
+            };
 
             // Обновляем список
             ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(filtered);
@@ -125,15 +131,22 @@ namespace Kyrsach
         
         private void OnServiceEdited(object? sender, EventArgs e)
         {
-            if (sender is ServicePresenter service)
+            if (sender is ServicePresenter editedService)
             {
-                // Обновляем только измененную услугу
+                // Обновляем данные в основной коллекции
                 if (ServiceBox.ItemsSource is ObservableCollection<ServicePresenter> items)
                 {
-                    var index = items.IndexOf(service);
-                    if (index >= 0)
+                    var existing = items.FirstOrDefault(s => s.Id == editedService.Id);
+                    if (existing != null)
                     {
-                        items[index] = service;
+                        // Обновляем все свойства
+                        existing.Title = editedService.Title;
+                        existing.Cost = editedService.Cost;
+                        existing.DurationInMinutes = editedService.DurationInMinutes;
+                        existing.Discount = editedService.Discount;
+                
+                        // Принудительно обновляем привязки
+                        items[items.IndexOf(existing)] = existing;
                     }
                 }
             }
