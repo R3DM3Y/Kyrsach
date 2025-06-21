@@ -54,19 +54,27 @@ public partial class MainWindow : Window
     private void LoadServices()
     {
         using var context = new PostgresContext();
-        var services = context.Services.ToList()
-            .Select(s => new ServicePresenter(s, this) { IsAdmin = this.IsAdmin });
+        var services = context.Services.ToList();
     
-        _allServices = new ObservableCollection<ServicePresenter>(services);
+        // Создаем коллекцию ServicePresenter один раз
+        _allServices = new ObservableCollection<ServicePresenter>(
+            services.Select(s => new ServicePresenter(s, this) { IsAdmin = IsAdmin }));
+    
         ServiceBox.ItemsSource = _allServices;
+        UpdateRecordsCounter(_allServices.Count, services.Count);
     }
+
 
     private void OnSearchTextChanged(object sender, TextChangedEventArgs e) => ApplyAllFilters();
 
     private void ApplyAllFilters()
     {
+        if (_allServices == null || !_allServices.Any()) 
+            return;
+
         IEnumerable<ServicePresenter> filtered = _allServices;
 
+        // Фильтрация по поиску
         if (!string.IsNullOrWhiteSpace(SearchTextBox.Text))
         {
             var searchText = SearchTextBox.Text.ToLower();
@@ -75,6 +83,7 @@ public partial class MainWindow : Window
                 (s.Description?.ToLower()?.Contains(searchText) ?? false));
         }
 
+        // Фильтрация по скидке
         switch (DiscountFilterComboBox.SelectedIndex)
         {
             case 1: filtered = filtered.Where(s => s.Discount >= 0 && s.Discount < 5); break;
@@ -84,6 +93,7 @@ public partial class MainWindow : Window
             case 5: filtered = filtered.Where(s => s.Discount >= 70 && s.Discount <= 100); break;
         }
 
+        // Сортировка
         filtered = SortComboBox.SelectedIndex switch
         {
             1 => filtered.OrderBy(s => s.Cost),
@@ -91,7 +101,9 @@ public partial class MainWindow : Window
             _ => filtered
         };
 
+        // Обновляем отображение
         ServiceBox.ItemsSource = new ObservableCollection<ServicePresenter>(filtered);
+        UpdateRecordsCounter(filtered.Count(), _allServices.Count);
     }
 
     private void OnServiceDeleted(object? sender, EventArgs e)
@@ -145,5 +157,10 @@ public partial class MainWindow : Window
         ServicePresenter.ServiceEdited -= OnServiceEdited;
         ServicePresenter.ServiceDeleted -= OnServiceDeleted;
         base.OnClosed(e);
+    }
+    
+    private void UpdateRecordsCounter(int displayed, int total)
+    {
+        RecordsCounter.Text = $"Показано: {displayed} из {total}";
     }
 }
