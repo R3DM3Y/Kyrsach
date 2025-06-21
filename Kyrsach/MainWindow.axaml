@@ -73,6 +73,11 @@
                                 <TextBlock Text="{Binding DurationText}"
                                            Margin="0,2,0,5"/>
                                 
+                                <Button Content="Фотографии" 
+                                        Command="{Binding OpenPhotosCommand}"
+                                        IsVisible="{Binding IsAdmin}"
+                                        Margin="0,5"/>
+                                
                                 <!-- Кнопки (ТОЛЬКО ДЛЯ АДМИНА) -->
                                 <StackPanel Orientation="Horizontal" Spacing="10" 
                                             Margin="0,10,0,0"

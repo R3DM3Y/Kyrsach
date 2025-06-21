@@ -12,6 +12,7 @@
         <entry key="Kyrsach/EditServiceWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Features/Admin/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/MainWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
+        <entry key="Kyrsach/ServicePhotosWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Views/AdminLoginView.axaml" value="Kyrsach/Kyrsach.csproj" />
         <entry key="Kyrsach/Views/MainWindow.axaml" value="Kyrsach/Kyrsach.csproj" />
       </map>

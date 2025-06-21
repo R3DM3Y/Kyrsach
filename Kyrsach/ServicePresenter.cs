@@ -16,6 +16,7 @@ public class ServicePresenter : Service
     public ICommand EditCommand { get; }
     public ICommand DeleteCommand { get; }
     public bool IsAdmin { get; set; }
+    public ICommand OpenPhotosCommand { get; }
     
     private readonly Window _parentWindow;
 
@@ -33,6 +34,15 @@ public class ServicePresenter : Service
 
         EditCommand = new RelayCommand(_ => OnEditClicked(), _ => IsAdmin);
         DeleteCommand = new RelayCommand(async _ => await OnDeleteClicked(), _ => IsAdmin && !IsDeleted);
+        OpenPhotosCommand = new RelayCommand(_ => OpenPhotosWindow(parentWindow));
+    }
+    
+    private void OpenPhotosWindow(Window parentWindow)
+    {
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            new ServicePhotosWindow(this.Id).ShowDialog(parentWindow);
+        }
     }
 
     public bool HasDiscount => Discount > 0;
