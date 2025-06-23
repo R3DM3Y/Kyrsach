@@ -1,12 +1,13 @@
-using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Kyrsach.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Kyrsach.Data;
+using Kyrsach.Models;
+using Kyrsach.Services;
 
-namespace Kyrsach
+namespace Kyrsach.Windows
 {
     public partial class AddAppointmentWindow : Window
     {

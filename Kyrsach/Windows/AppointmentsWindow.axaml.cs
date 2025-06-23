@@ -1,15 +1,14 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
-using Avalonia;
+using System.Timers;
 using Avalonia.Controls;
 using Avalonia.Threading;
+using Kyrsach.Data;
 using Kyrsach.Models;
-using System.Collections.ObjectModel;
-using System.Timers;
-using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kyrsach
+namespace Kyrsach.Windows
 {
     public partial class AppointmentsWindow : Window
     {

@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
+using Kyrsach.Data;
 using Kyrsach.Models;
+using Kyrsach.Services;
 
-namespace Kyrsach;
+namespace Kyrsach.Windows;
 
 public partial class MainWindow : Window
 {
@@ -81,8 +82,8 @@ public partial class MainWindow : Window
         {
             var searchText = SearchTextBox.Text.ToLower();
             filtered = filtered.Where(s => 
-                s.Title.ToLower().Contains(searchText) ||
-                (s.Description?.ToLower()?.Contains(searchText) ?? false));
+                s.Title.ToLower().Contains((string)searchText) ||
+                (s.Description?.ToLower()?.Contains((string)searchText) ?? false));
         }
 
         // Фильтрация по скидке
@@ -138,7 +139,7 @@ public partial class MainWindow : Window
     {
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var addWindow = new AddServiceWindow();
+            var addWindow = new Windows.AddServiceWindow();
             if (await addWindow.ShowDialog<bool>(desktop.MainWindow))
             {
                 LoadServices();
@@ -150,7 +151,7 @@ public partial class MainWindow : Window
     {
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            new AppointmentsWindow().ShowDialog(desktop.MainWindow);
+            new Windows.AppointmentsWindow().ShowDialog(desktop.MainWindow);
         }
     }
 

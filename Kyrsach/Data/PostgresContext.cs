@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Kyrsach.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kyrsach.Models;
+namespace Kyrsach.Data;
 
 public partial class PostgresContext : DbContext
 {

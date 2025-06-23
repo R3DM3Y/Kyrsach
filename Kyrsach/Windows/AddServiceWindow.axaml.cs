@@ -1,12 +1,14 @@
-using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Kyrsach.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
+using Kyrsach.Data;
+using Kyrsach.Models;
+using Kyrsach.Services;
+using Microsoft.EntityFrameworkCore;
 
-namespace Kyrsach
+namespace Kyrsach.Windows
 {
     public partial class AddServiceWindow : Window
     {

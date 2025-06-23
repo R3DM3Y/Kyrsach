@@ -1,7 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Kyrsach.Services;
 
-namespace Kyrsach;
+namespace Kyrsach.Windows;
 
 public partial class AuthWindow : Window
 {

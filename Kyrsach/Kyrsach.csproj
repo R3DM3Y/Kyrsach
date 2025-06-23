@@ -30,8 +30,32 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="MainWindow.axaml.cs">
+      <Compile Update="Windows\AddAppointmentWindow.axaml.cs">
+        <DependentUpon>AddAppointmentWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\AddServiceWindow.axaml.cs">
+        <DependentUpon>AddServiceWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\AppointmentsWindow.axaml.cs">
+        <DependentUpon>AppointmentsWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\AuthWindow.axaml.cs">
+        <DependentUpon>AuthWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\EditServiceWindow.axaml.cs">
+        <DependentUpon>EditServiceWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\MainWindow.axaml.cs">
         <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\ServicePhotosWindow.axaml.cs">
+        <DependentUpon>ServicePhotosWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

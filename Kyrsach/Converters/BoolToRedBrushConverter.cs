@@ -1,18 +1,15 @@
-using Avalonia.Data;
-using Avalonia.Data.Converters;
 using System;
 using System.Globalization;
+using Avalonia.Data.Converters;
+using Avalonia.Media;
 
-namespace Kyrsach
+namespace Kyrsach.Converters
 {
-    public class DiscountToVisibilityConverter : IValueConverter
+    public class BoolToRedBrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool hasDiscount)
-                return hasDiscount;
-            
-            return false;
+            return (value is bool b && b) ? Brushes.Red : Brushes.Black;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

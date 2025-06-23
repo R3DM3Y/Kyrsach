@@ -5,13 +5,14 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using Avalonia.Layout;
+using Kyrsach.Data;
 using Kyrsach.Models;
-using MessageBox.Avalonia;
+using Kyrsach.Services;
 
-namespace Kyrsach;
+namespace Kyrsach.Windows;
 
 public partial class ServicePhotosWindow : Window
 {

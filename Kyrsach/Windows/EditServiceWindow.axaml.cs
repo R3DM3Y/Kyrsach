@@ -1,15 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
+using Kyrsach.Data;
 using Kyrsach.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using Kyrsach.Services;
 
-namespace Kyrsach
+namespace Kyrsach.Windows
 {
     public partial class EditServiceWindow : Window
     {

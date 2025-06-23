@@ -1,14 +1,20 @@
-using Avalonia.Controls;
-using Avalonia.Media;
-using Avalonia.Media.Imaging;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using Kyrsach;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Kyrsach.Data;
 using Kyrsach.Models;
+using Kyrsach.Utils;
 using Microsoft.EntityFrameworkCore;
+using AddAppointmentWindow = Kyrsach.Windows.AddAppointmentWindow;
+using EditServiceWindow = Kyrsach.Windows.EditServiceWindow;
+using ServicePhotosWindow = Kyrsach.Windows.ServicePhotosWindow;
+
+namespace Kyrsach.Services;
 
 public class ServicePresenter : Service
 {

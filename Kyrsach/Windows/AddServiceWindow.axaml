@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="Kyrsach.AddServiceWindow"
+        x:Class="Kyrsach.Windows.AddServiceWindow"
         Title="Добавление услуги"
         Width="400"
         SizeToContent="Height">

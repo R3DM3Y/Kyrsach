@@ -3,14 +3,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kyrsach"
+        xmlns:converters="clr-namespace:Kyrsach.Converters"
         mc:Ignorable="d" 
-        x:Class="Kyrsach.MainWindow"
+        x:Class="Kyrsach.Windows.MainWindow"
         x:CompileBindings="False"
         Title="Kyrsach">
     
     <Window.Resources>
-        <local:DiscountToVisibilityConverter x:Key="DiscountConverter"/>
-        <local:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
+        <converters:DiscountToVisibilityConverter x:Key="DiscountConverter"/>
+        <converters:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
     </Window.Resources>
 
     <DockPanel>

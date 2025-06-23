@@ -10,14 +10,14 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var authWindow = new AuthWindow();
+            var authWindow = new Windows.AuthWindow();
             authWindow.Show();
         
             authWindow.Closed += (_, _) => 
             {
                 if (authWindow.IsAuthenticated)
                 {
-                    desktop.MainWindow = new MainWindow(authWindow.IsAdmin);
+                    desktop.MainWindow = new Windows.MainWindow(authWindow.IsAdmin);
                     desktop.MainWindow.Show();
                 }
                 else

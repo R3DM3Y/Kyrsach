@@ -1,10 +1,9 @@
-using Avalonia.Controls;
-using Avalonia.Layout;
-using Avalonia.Media;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Layout;
 
-namespace Kyrsach
+namespace Kyrsach.Services
 {
     public static class MessageBoxService
     {

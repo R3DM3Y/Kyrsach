@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace Kyrsach
+namespace Kyrsach.Utils
 {
     public class RelayCommand : ICommand
     {
