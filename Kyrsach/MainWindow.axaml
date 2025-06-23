@@ -19,7 +19,7 @@
             <TextBox x:Name="SearchTextBox" Width="200" Watermark="Поиск..." 
                      TextChanged="OnSearchTextChanged"/>
             <ComboBox x:Name="DiscountFilterComboBox" Width="130" SelectedIndex="0">
-                <ComboBoxItem>Все товары</ComboBoxItem>
+                <ComboBoxItem>Все услуги</ComboBoxItem>
                 <ComboBoxItem>0-5%</ComboBoxItem>
                 <ComboBoxItem>5-15%</ComboBoxItem>
                 <ComboBoxItem>15-30%</ComboBoxItem>
@@ -74,12 +74,13 @@
                                 <TextBlock Text="{Binding DurationText}"
                                            Margin="0,2,0,5"/>
                                 
-                                <Button Content="Фотографии" 
-                                        Command="{Binding OpenPhotosCommand}"
+                                <!-- Кнопка записи -->
+                                <Button Content="Записать клиента"
+                                        Command="{Binding BookCommand}"
                                         IsVisible="{Binding IsAdmin}"
                                         Margin="0,5"/>
                                 
-                                <!-- Кнопки (ТОЛЬКО ДЛЯ АДМИНА) -->
+                                <!-- Кнопки управления -->
                                 <StackPanel Orientation="Horizontal" Spacing="10" 
                                             Margin="0,10,0,0"
                                             IsVisible="{Binding IsAdmin}">

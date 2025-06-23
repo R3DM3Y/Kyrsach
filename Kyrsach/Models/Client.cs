@@ -30,4 +30,8 @@ public partial class Client
     public virtual Gender GenderCodeNavigation { get; set; } = null!;
 
     public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
+    public override string ToString()
+    {
+        return $"{LastName} {FirstName} {Patronymic}".Trim();
+    }
 }

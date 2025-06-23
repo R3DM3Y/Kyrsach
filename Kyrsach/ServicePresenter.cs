@@ -15,6 +15,7 @@ public class ServicePresenter : Service
     public bool IsDeleted { get; private set; }
     public ICommand EditCommand { get; }
     public ICommand DeleteCommand { get; }
+    public ICommand BookCommand { get; }
     public bool IsAdmin { get; set; }
     public ICommand OpenPhotosCommand { get; }
     
@@ -34,7 +35,24 @@ public class ServicePresenter : Service
 
         EditCommand = new RelayCommand(_ => OnEditClicked(), _ => IsAdmin);
         DeleteCommand = new RelayCommand(async _ => await OnDeleteClicked(), _ => IsAdmin && !IsDeleted);
+        BookCommand = new RelayCommand(_ => BookAppointment(), _ => IsAdmin);
         OpenPhotosCommand = new RelayCommand(_ => OpenPhotosWindow(parentWindow));
+    }
+
+    private void BookAppointment()
+    {
+        if (_parentWindow != null)
+        {
+            var service = new Service
+            {
+                Id = this.Id,
+                Title = this.Title,
+                DurationInMinutes = this.DurationInMinutes
+            };
+            
+            var window = new AddAppointmentWindow(service);
+            window.ShowDialog(_parentWindow);
+        }
     }
     
     private void OpenPhotosWindow(Window parentWindow)
