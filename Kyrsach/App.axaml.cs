@@ -10,10 +10,9 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Сначала показываем окно авторизации
             var authWindow = new AuthWindow();
             authWindow.Show();
-            
+        
             authWindow.Closed += (_, _) => 
             {
                 if (authWindow.IsAuthenticated)

@@ -26,6 +26,8 @@ public partial class MainWindow : Window
         InitializeEventHandlers();
         UpdateAdminVisibility();
     }
+    
+    
 
     private void InitializeEventHandlers()
     {

@@ -5,19 +5,40 @@ namespace Kyrsach;
 
 public partial class AuthWindow : Window
 {
+    private const string AdminPassword = "0000"; // Стандартный пароль
+    
     public bool IsAdmin { get; private set; }
     public bool IsAuthenticated { get; private set; }
 
     public AuthWindow()
     {
         InitializeComponent();
-        this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
     }
 
-    private void LoginButton_Click(object sender, RoutedEventArgs e)
+    private void UserModeButton_Click(object sender, RoutedEventArgs e)
     {
-        IsAdmin = (CodeTextBox.Text == "0000");
+        IsAdmin = false;
         IsAuthenticated = true;
         Close();
+    }
+
+    private void AdminModeButton_Click(object sender, RoutedEventArgs e)
+    {
+        PasswordPanel.IsVisible = true;
+    }
+
+    private void AdminLoginButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (PasswordBox.Text == AdminPassword)
+        {
+            IsAdmin = true;
+            IsAuthenticated = true;
+            Close();
+        }
+        else
+        {
+            MessageBoxService.ShowError(this, "Ошибка", "Неверный пароль");
+            return;
+        }
     }
 }

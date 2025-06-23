@@ -18,7 +18,7 @@
             <TextBox x:Name="SearchTextBox" Width="200" Watermark="Поиск..." 
                      TextChanged="OnSearchTextChanged"/>
             <ComboBox x:Name="DiscountFilterComboBox" Width="130" SelectedIndex="0">
-                <ComboBoxItem>Все скидки</ComboBoxItem>
+                <ComboBoxItem>Все товары</ComboBoxItem>
                 <ComboBoxItem>0-5%</ComboBoxItem>
                 <ComboBoxItem>5-15%</ComboBoxItem>
                 <ComboBoxItem>15-30%</ComboBoxItem>
