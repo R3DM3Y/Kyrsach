@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kyrsach"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Kyrsach.AppointmentsWindow"
+        x:CompileBindings="False"
+        Title="Ближайшие записи"
+        Width="800" Height="500">
+    <Window.Resources>
+        <local:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+    
+        <TextBlock Grid.Row="0" Text="{Binding VirtualTimeDisplay}" 
+                   FontSize="16" FontWeight="Bold" Margin="10"/>
+        <ListBox ItemsSource="{Binding Appointments}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding ServiceName}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding ClientName}"/>
+                        <TextBlock Text="{Binding Email}"/>
+                        <TextBlock Text="{Binding Phone}"/>
+                        <TextBlock Text="{Binding DateTime}"/>
+                        <TextBlock Text="{Binding TimeLeftText}" 
+                                   Foreground="{Binding IsUrgent, Converter={StaticResource BoolToRedBrushConverter}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

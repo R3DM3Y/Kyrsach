@@ -146,13 +146,13 @@ public partial class MainWindow : Window
         }
     }
 
-    // private void AppointmentsButton_Click(object sender, RoutedEventArgs e)
-    // {
-    //     if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-    //     {
-    //         new AppointmentsWindow().ShowDialog(desktop.MainWindow);
-    //     }
-    // }
+    private void AppointmentsButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            new AppointmentsWindow().ShowDialog(desktop.MainWindow);
+        }
+    }
 
     protected override void OnClosed(EventArgs e)
     {

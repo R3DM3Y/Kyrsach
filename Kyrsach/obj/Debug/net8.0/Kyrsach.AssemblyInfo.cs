@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kyrsach")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+914c39e33055687510081812737c3478fe3d3da9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+014432ef4e26173ad24d7ac2bf64eca3e23c6e1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kyrsach")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kyrsach")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

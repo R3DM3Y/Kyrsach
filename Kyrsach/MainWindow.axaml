@@ -10,6 +10,7 @@
     
     <Window.Resources>
         <local:DiscountToVisibilityConverter x:Key="DiscountConverter"/>
+        <local:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
     </Window.Resources>
 
     <DockPanel>
@@ -37,7 +38,7 @@
             <Button x:Name="AppointmentsButton" 
                     Content="Ближайшие записи" 
                     IsVisible="{Binding IsAdmin, RelativeSource={RelativeSource AncestorType=Window}}"
-                    />
+                    Click="AppointmentsButton_Click"/>
         </StackPanel>
         
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="5" Spacing="10">

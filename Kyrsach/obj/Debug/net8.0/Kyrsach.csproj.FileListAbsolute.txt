@@ -156,3 +156,11 @@ C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Markdown.Avalonia.
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\ColorTextBlock.Avalonia.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Markdown.Avalonia.dll
 C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\MessageBox.Avalonia.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\Avalonia.Controls.DataGrid.dll
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-loongarch64\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-musl-arm\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-musl-arm64\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-musl-loongarch64\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-musl-riscv64\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-riscv64\native\libHarfBuzzSharp.so
+C:\Users\romas\RiderProjects\Kyrsach\Kyrsach\bin\Debug\net8.0\runtimes\linux-x86\native\libHarfBuzzSharp.so
