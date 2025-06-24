@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Kyrsach.Windows.ServicePhotosWindow"
+        x:CompileBindings="False"
         Title="ServicePhotosWindow"
         Width="700" Height="550">
     <Grid>
@@ -17,7 +18,10 @@
         </ScrollViewer>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="5">
-            <Button Content="Добавить фото" Click="AddPhoto_Click" Padding="10,5"/>
+            <Button Content="Добавить фото" 
+                    Click="AddPhoto_Click" 
+                    Padding="10,5"
+                    IsVisible="{Binding IsAdmin, ElementName=ThisWindow}"/>
             <Button Content="Закрыть" Click="Close_Click" Padding="10,5"/>
         </StackPanel>
     </Grid>

@@ -65,7 +65,7 @@ public class ServicePresenter : Service
     {
         if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            new ServicePhotosWindow(this.Id).ShowDialog(parentWindow);
+            new ServicePhotosWindow(this.Id, this.IsAdmin).ShowDialog(parentWindow);
         }
     }
 

@@ -91,6 +91,9 @@
                                     <Button Content="Удалить"
                                             Command="{Binding DeleteCommand}"
                                             Padding="10,5"/>
+                                    <Button Content="Фотографии"
+                                            Command="{Binding OpenPhotosCommand}"
+                                            Padding="10,5"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

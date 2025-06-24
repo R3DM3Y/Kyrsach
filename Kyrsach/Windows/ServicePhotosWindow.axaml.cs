@@ -16,6 +16,7 @@ namespace Kyrsach.Windows;
 
 public partial class ServicePhotosWindow : Window
 {
+    public bool IsAdmin { get; }
     private readonly int _serviceId;
     private readonly string _photosDirectory = Path.Combine("wwwroot", "service_photos");
 
@@ -24,8 +25,9 @@ public partial class ServicePhotosWindow : Window
         InitializeComponent();
     }
 
-    public ServicePhotosWindow(int serviceId) : this()
+    public ServicePhotosWindow(int serviceId, bool isAdmin) : this()
     {
+        IsAdmin = isAdmin;
         _serviceId = serviceId;
         Directory.CreateDirectory(_photosDirectory);
         LoadPhotos();
