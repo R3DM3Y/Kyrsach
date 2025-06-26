@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kyrsach.Models;
 
@@ -22,4 +23,7 @@ public partial class ClientService
     public virtual ICollection<ProductSale> ProductSales { get; set; } = new List<ProductSale>();
 
     public virtual Service Service { get; set; } = null!;
+    
+    [NotMapped] // Вычисляемое свойство, не сохраняется в БД
+    public DateTime EndTime => StartTime.AddMinutes(Service?.DurationInMinutes ?? 0);
 }

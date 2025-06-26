@@ -7,47 +7,35 @@
         x:CompileBindings="False"
         Title="AddAppointmentWindow">
     <StackPanel Margin="15" Spacing="10">
-        <TextBlock Text="Услуга:" FontWeight="Bold"/>
-        <TextBlock x:Name="ServiceNameText" FontWeight="Bold"/>
-        
-        <TextBlock Text="Длительность:"/>
-        <TextBlock x:Name="DurationText"/>
+        <Border CornerRadius="5" Padding="10">
+            <StackPanel>
+                <TextBlock Text="Услуга:" FontWeight="Bold"/>
+                <TextBlock x:Name="ServiceNameText" FontWeight="Bold" Margin="0,5"/>
+                <TextBlock Text="Длительность:"/>
+                <TextBlock x:Name="DurationText"/>
+            </StackPanel>
+        </Border>
 
-        <TextBlock Text="Клиент:" Margin="0,10,0,0"/>
-        <ComboBox x:Name="ClientComboBox"
-                  ItemsSource="{Binding Clients}"
-                  SelectedItem="{Binding SelectedClient}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding LastName}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <TextBlock Text="Клиент:" FontWeight="Bold"/>
+        <ComboBox ItemsSource="{Binding Clients}" 
+                  SelectedItem="{Binding SelectedClient}"
+                  DisplayMemberBinding="{Binding LastName}"/>
 
         <Grid ColumnDefinitions="*,*" Margin="0,10">
             <StackPanel Grid.Column="0">
-                <TextBlock Text="Дата:"/>
-                <CalendarDatePicker SelectedDate="{Binding SelectedDate}"
-                                    DisplayDate="{Binding SelectedDate}"
-                                    Margin="0,5"/>
+                <TextBlock Text="Дата:" FontWeight="Bold"/>
+                <CalendarDatePicker SelectedDate="{Binding SelectedDate}"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                <TextBlock Text="Время (ЧЧ:ММ):"/>
-                <TextBox Text="{Binding TimeText}"
-                         Watermark="14:00"
-                         Margin="0,5"/>
+                <TextBlock Text="Время (ЧЧ:ММ):" FontWeight="Bold"/>
+                <TextBox Text="{Binding TimeText}" Watermark="14:00"/>
             </StackPanel>
         </Grid>
 
-        <TextBlock Text="Примечания:"/>
-        <TextBox x:Name="NotesTextBox" 
-                 AcceptsReturn="True" 
-                 Height="60"
-                 Watermark="Дополнительная информация"/>
+        <TextBlock Text="Примечания:" FontWeight="Bold"/>
+        <TextBox x:Name="NotesTextBox" AcceptsReturn="True" Height="60"/>
 
-        <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
-                    Spacing="10" Margin="0,15">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
             <Button Content="Отмена" Width="100" Click="CancelButton_Click"/>
             <Button Content="Сохранить" Width="100" Click="SaveButton_Click"/>
         </StackPanel>

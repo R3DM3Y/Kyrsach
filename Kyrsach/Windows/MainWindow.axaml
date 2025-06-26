@@ -2,7 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Kyrsach"
         xmlns:converters="clr-namespace:Kyrsach.Converters"
         mc:Ignorable="d" 
         x:Class="Kyrsach.Windows.MainWindow"
@@ -40,6 +39,10 @@
                     Content="Ближайшие записи" 
                     IsVisible="{Binding IsAdmin, RelativeSource={RelativeSource AncestorType=Window}}"
                     Click="AppointmentsButton_Click"/>
+            <Button Content="Добавить клиента" 
+                    Click="OpenAddClientWindow"
+                    HorizontalAlignment="Left"
+                    Margin="10"/>
         </StackPanel>
         
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="5" Spacing="10">

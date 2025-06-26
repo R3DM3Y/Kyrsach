@@ -166,4 +166,10 @@ public partial class MainWindow : Window
     {
         RecordsCounter.Text = $"Показано: {displayed} из {total}";
     }
+    
+    private void OpenAddClientWindow(object sender, RoutedEventArgs e)
+    {
+        var window = new AddClientWindow();
+        window.ShowDialog(this);
+    }
 }

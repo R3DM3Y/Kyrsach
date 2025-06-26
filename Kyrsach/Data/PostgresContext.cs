@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Kyrsach.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +44,27 @@ public partial class PostgresContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ScheduleSettings>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.DayStart).HasConversion(
+                v => v.ToString(),
+                v => TimeSpan.Parse(v));
+            entity.Property(e => e.DayEnd).HasConversion(
+                v => v.ToString(),
+                v => TimeSpan.Parse(v));
+                
+            // Добавляем начальные данные
+            entity.HasData(new ScheduleSettings
+            {
+                Id = 1,
+                DayStart = new TimeSpan(9, 0, 0),
+                DayEnd = new TimeSpan(21, 0, 0),
+                BreakBetweenSlots = 20,
+                WorkingDays = 0b0111110 // Пн-Пт
+            });
+        });
+        
         modelBuilder.Entity<Client>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("Client_pkey");

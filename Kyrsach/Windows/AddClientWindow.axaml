@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Kyrsach.Windows.AddClientWindow"
+        Title="Добавление клиента"
+        Width="400"
+        SizeToContent="Height">
+    <StackPanel Margin="20" Spacing="10">
+        <!-- ФИО -->
+        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+            <TextBox Grid.Column="0" x:Name="LastNameTextBox" Watermark="Фамилия*"/>
+            <TextBox Grid.Column="1" x:Name="FirstNameTextBox" Watermark="Имя*"/>
+            <TextBox Grid.Column="2" x:Name="PatronymicTextBox" Watermark="Отчество"/>
+        </Grid>
+        
+        <!-- Основные данные -->
+        <DatePicker x:Name="BirthDatePicker"/>
+        <TextBox x:Name="EmailTextBox" Watermark="Email"/>
+        <TextBox x:Name="PhoneTextBox" Watermark="Телефон*"/>
+        
+        <!-- Пол -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="Пол:" VerticalAlignment="Center"/>
+            <RadioButton x:Name="MaleRadioButton" 
+                         GroupName="GenderGroup" 
+                         Content="Мужской" 
+                         IsChecked="True"/>
+            <RadioButton x:Name="FemaleRadioButton" 
+                         GroupName="GenderGroup" 
+                         Content="Женский"/>
+        </StackPanel>
+        
+        <!-- Кнопки и сообщение об ошибке -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button Content="Отмена" Click="Cancel_Click"/>
+            <Button Content="Сохранить" Click="Save_Click" IsDefault="True"/>
+        </StackPanel>
+        <TextBlock x:Name="ErrorText" Foreground="Red" TextWrapping="Wrap"/>
+    </StackPanel>
+</Window>

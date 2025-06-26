@@ -10,31 +10,24 @@
         Title="Ближайшие записи"
         Width="800" Height="500">
     <Window.Resources>
-        <converters:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
+        <converters:BoolToRedBrushConverter x:Key="UrgentConverter"/>
     </Window.Resources>
     
-    <Grid>
-        <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-    
-        <TextBlock Grid.Row="0" Text="{Binding VirtualTimeDisplay}" 
-                   FontSize="16" FontWeight="Bold" Margin="10"/>
-        <ListBox ItemsSource="{Binding Appointments}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
+    <ListBox ItemsSource="{Binding Appointments}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Border Margin="5" Padding="10" CornerRadius="5"
+                        Background="{Binding IsUrgent, Converter={StaticResource UrgentConverter}}">
+                    <StackPanel>
                         <TextBlock Text="{Binding ServiceName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding ClientName}"/>
                         <TextBlock Text="{Binding Email}"/>
                         <TextBlock Text="{Binding Phone}"/>
-                        <TextBlock Text="{Binding DateTime}"/>
-                        <TextBlock Text="{Binding TimeLeftText}" 
-                                   Foreground="{Binding IsUrgent, Converter={StaticResource BoolToRedBrushConverter}}"/>
+                        <TextBlock Text="{Binding FormattedDateTime}"/>
+                        <TextBlock Text="{Binding TimeLeftText}" FontWeight="Bold"/>
                     </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+                </Border>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </Window>
